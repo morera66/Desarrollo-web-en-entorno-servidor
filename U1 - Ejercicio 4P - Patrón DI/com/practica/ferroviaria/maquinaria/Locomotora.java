@@ -8,7 +8,7 @@ public class Locomotora {
     private int aniofabricacion;
     private IMecanico mecanico;
 
-    Locomotora(String matricula, double potencia, int aniofabricacion, IMecanico mecanico){
+    public Locomotora(String matricula, double potencia, int aniofabricacion, IMecanico mecanico){
         this.matricula = matricula;
         this.potencia = potencia;
         this.aniofabricacion = aniofabricacion;

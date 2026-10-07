@@ -1,6 +1,6 @@
 package com.practica.ferroviaria.personal;
 
-public class Mecanico implements IMaquinista{
+public class Mecanico implements IMecanico{
     private String nombreCompleto;
     private String telefono;
     private String especialidad ;

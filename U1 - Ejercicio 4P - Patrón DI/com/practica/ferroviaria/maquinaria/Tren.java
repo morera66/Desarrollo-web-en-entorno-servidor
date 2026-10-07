@@ -15,7 +15,7 @@ public class Tren {
     }
 
 
-    public void agregaVagon(double capacidadMaxima, String tipoMercancia){
+    public void agregarVagon(double capacidadMaxima, String tipoMercancia){
         if(vagones.size() >= 5){
             throw new IllegalStateException("Un tren no puede tener más de 5 vagones");
         }

@@ -4,6 +4,9 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/U1 - Ejercicio 1P - Patrón Singleton (CE a, e y g)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/U1 - Ejercicio 2P - Patrón DAO (CE a, e y g)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/U1 - Ejercicio 3P - Patrón Factory (CE a, e y g)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/U1 - Ejercicio 4P - Patrón DI" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
