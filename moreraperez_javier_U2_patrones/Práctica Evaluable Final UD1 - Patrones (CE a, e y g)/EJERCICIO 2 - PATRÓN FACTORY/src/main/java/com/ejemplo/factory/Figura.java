@@ -1,0 +1,11 @@
+package com.ejemplo.factory;
+
+public abstract class Figura {
+    protected String color;
+
+    public Figura(String color) {
+        this.color = color;
+    }
+
+    public abstract void dibujarFigura();
+}
