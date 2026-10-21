@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<main class="page">
+    <section class="card">
+        <!-- material es la fila encontrada-->
+        <h1 th:text="${material[1]}">Nombre del material</h1>
+        <p>Código: <strong th:text="${material[0]}">CODIGO</strong></p>
+        <p th:text="${material[2]}">Descripción</p>
+        <p>Turno solicitado: <strong th:text="${turno}">general</strong></p>
+
+        <div class="actions">
+            <a class="button" th:href="@{/solicitud/nueva}">Solicitar préstamo</a>
+            <a class="button secondary" th:href="@{/}">Volver al catálogo</a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

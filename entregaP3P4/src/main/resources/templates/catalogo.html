@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <main class="page">
+
+        <section class="card" th:each="material : ${materiales}">
+            <h2 th:text="${material[1]}">Nombre del material</h2>
+            <p>Código: <strong th:text="${material[0]}">CODIGO</strong></p>
+            <p th:text="${material[2]}">Descripción</p>
+            <a class="button" th:href="@{/materiales/{codigo}(codigo=${material[0]})}">Ver ficha</a>
+        </section>
+
+    </main>
+
+</body>
+</html>
