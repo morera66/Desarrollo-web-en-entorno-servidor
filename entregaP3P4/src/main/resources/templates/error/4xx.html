@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<main class="page">
+    <section class="card">
+        <p class="status">HTTP <span th:text="${status}">400</span></p>
+        <h1>La petición no se pudo completar</h1>
+        <p>Revisa la dirección o los datos enviados y vuelve a intentarlo.</p>
+        <a class="button" th:href="@{/}">Volver al catálogo</a>
+    </section>
+</main>
+</body>
+</html>

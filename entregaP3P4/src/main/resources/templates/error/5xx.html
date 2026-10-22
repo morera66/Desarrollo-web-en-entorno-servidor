@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<main class="page">
+    <section class="card">
+        <p class="status">HTTP <span th:text="${status}">500</span></p>
+        <h1>Ha ocurrido un error en el servidor</h1>
+        <p>No es culpa tuya. Inténtalo de nuevo más tarde.</p>
+        <a class="button" th:href="@{/}">Volver al catálogo</a>
+    </section>
+</main>
+</body>
+</html>

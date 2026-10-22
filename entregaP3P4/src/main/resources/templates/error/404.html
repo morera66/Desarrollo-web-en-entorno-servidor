@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<main class="page">
+    <section class="card">
+        <p class="status">HTTP <span th:text="${status}">404</span></p>
+        <h1>No encontramos lo que buscas</h1>
+        <p>El material o la página solicitada no existe en el catálogo.</p>
+        <!-- muestra la ruta -->
+        <p>Ruta: <code th:text="${path}">/ruta</code></p>
+        <a class="button" th:href="@{/}">Volver al catálogo</a>
+    </section>
+</main>
+</body>
+</html>
