@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Resumen de una solicitud válida. Los datos son solo de esta petición: no se guardan. -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solicitud recibida · Aula maker</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<main class="page">
+    <section class="card">
+        <!-- no se presenta como reservada ni aprobada -->
+        <h1>Resumen de tu solicitud</h1>
+        <p>Estos son los datos recibidos. La solicitud no se ha guardado ni aprobado.</p>
+        <p>Nombre: <strong th:text="${solicitud.nombre}">Nombre</strong></p>
+        <p>Correo: <strong th:text="${solicitud.correo}">correo@ejemplo.com</strong></p>
+        <p>Material: <strong th:text="${nombreMaterial}">Material</strong>
+            (<span th:text="${solicitud.material}">CODIGO</span>)</p>
+        <p>Unidades: <strong th:text="${solicitud.unidades}">1</strong></p>
+        <p>Recogida: <strong th:text="${solicitud.fechaRecogida}">2026-01-01</strong></p>
+        <p>Devolución: <strong th:text="${solicitud.fechaDevolucion}">2026-01-01</strong></p>
+        <p>Motivo: <span th:text="${solicitud.motivo}">Motivo</span></p>
+        <p>Normas aceptadas: <strong>Sí</strong></p>
+
+        <p>Días del préstamo: <strong th:text="${dias}">1</strong></p>
+        <p>Total días-unidad: <strong th:text="${diasUnidad}">1</strong></p>
+
+        <!-- mensaje distinto según la duración -->
+        <p th:if="${dias == 1}">Es un préstamo de un solo día: devuélvelo el mismo día.</p>
+        <p th:unless="${dias == 1}">
+            Es un préstamo de <span th:text="${dias}">2</span> días: cuida el material durante ese tiempo.
+        </p>
+
+        <div class="actions">
+            <a class="button" th:href="@{/}">Volver al catálogo</a>
+            <a class="button secondary" th:href="@{/solicitud/nueva}">Nueva solicitud</a>
+        </div>
+    </section>
+</main>
+</body>
+</html>
