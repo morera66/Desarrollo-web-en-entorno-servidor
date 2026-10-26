@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            background: #f2f5f7;
+            color: #1f2933;
+            line-height: 1.5;
+        }
+
+        /* ancho maximo para que no se estire en pantallas grandes */
+        .page {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #d5dde5;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 { margin-bottom: 0.25rem; }
+
+        .saludo { color: #52606d; margin-top: 0; }
+
+        .lista {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* cada asignatura en una fila: numero, nombre y minutos */
+        .lista li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e5e9ee;
+        }
+
+        .lista li:last-child { border-bottom: none; }
+
+        .numero {
+            display: grid;
+            place-items: center;
+            width: 1.8rem;
+            height: 1.8rem;
+            border-radius: 50%;
+            background: #1d4ed8;
+            color: #fff;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .minutos {
+            margin-left: auto;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .resumen strong { color: #1d4ed8; }
+    </style>
+</head>
+<body>
+<main class="page">
+    <section class="card">
+        <!-- si en la url ponen html se ve como texto y no se ejecuta -->
+        <h1 th:text="${titulo}">Mi plan de estudio</h1>
+        <p class="saludo" th:text="'¡Hola, ' + ${nombre} + '!'">¡Hola, estudiante!</p>
+    </section>
+
+    <section class="card">
+        <!-- cuenta los elementos de la lista -->
+        <h2>Asignaturas de hoy: <span th:text="${#lists.size(asignaturas)}">3</span></h2>
+
+        <ul class="lista">
+            <!-- iterStat es el estado del bucle, iterStat.index es la posicion -->
+            <li th:each="asignatura, iterStat : ${asignaturas}">
+                <!-- se suma 1 al indice para que la numeracion empiece en 1 -->
+                <span class="numero" th:text="${iterStat.index + 1}">1</span>
+                <span th:text="${asignatura}">Programación</span>
+                <!-- con el mismo indice se coge la duracion de la otra lista -->
+                <span class="minutos" th:text="${duraciones[iterStat.index]} + ' min'">25 min</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="card resumen">
+        <h2>Tiempo total</h2>
+        <p>
+            Hoy vas a estudiar <strong th:text="${totalMinutos}">95</strong> minutos,
+            <!-- #numbers.formatDecimal deja el numero con 2 decimales -->
+            unas <strong th:text="${#numbers.formatDecimal(totalHoras, 1, 2)}">1,58</strong> horas.
+        </p>
+    </section>
+
+</main>
+
+</body>
+</html>
