@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+// dto del formulario
 public class SolicitudPrestamoForm {
 
     @NotBlank (message = "Escribe tu nombre.")
