@@ -1,0 +1,128 @@
+/* estilos comunes de las dos paginas */
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #fbf7f2;
+    color: #2b2520;
+    line-height: 1.5;
+}
+
+/* cabecera (fragmento cabecera) */
+.cabecera {
+    background: #7a2e1d;
+    color: #fff;
+    padding: 2rem 1rem 1.5rem;
+    text-align: center;
+}
+
+.cabecera h1 { margin: 0.25rem 0; }
+
+.centro {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.subtitulo { margin: 0; opacity: 0.9; }
+
+/* barra con la navegacion y el selector de idioma */
+.barra {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+}
+
+.navegacion, .idioma {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navegacion a, .idioma a {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    color: #7a2e1d;
+    text-decoration: none;
+    border: 1px solid #e0cfc2;
+    background: #fff;
+}
+
+/* el enlace de la pagina actual (th:classappend en el fragmento) */
+.navegacion a.activa {
+    background: #7a2e1d;
+    color: #fff;
+    border-color: #7a2e1d;
+}
+
+.contenido {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+}
+
+/* lista de actividades en rejilla, en movil queda una por fila */
+.actividades {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+/* tarjeta de actividad (fragmento actividad) y bloques de la visita */
+.actividad, .bloque {
+    background: #fff;
+    border: 1px solid #e0cfc2;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.actividad h3, .bloque h2 {
+    margin-top: 0;
+    color: #7a2e1d;
+}
+
+.dato {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: #5b4d42;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+/* pie (fragmento pie) */
+.pie {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid #e0cfc2;
+    color: #5b4d42;
+}
+
+.pie p { margin: 0.25rem 0; }
+.nota { font-size: 0.85rem; }
+
+.tarjeta { height: 100%; }
+
+/* pantallas pequeñas: la barra se pone en columna */
+@media (max-width: 600px) {
+    .barra {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .navegacion, .idioma { justify-content: center; }
+}

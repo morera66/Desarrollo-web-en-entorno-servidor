@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- aqui estan los trozos de html que comparten las dos paginas.
+     cada th:fragment le pone un nombre a un trozo para poder usarlo desde otra plantilla-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- cada pagina le pasa su titulo y su subtitulo, asi la cabecera muestra un contenido distinto segun la pagina -->
+<header class="cabecera" th:fragment="cabecera(titulo, subtitulo)">
+    <p class="centro" th:text="#{app.nombre}">Centro Cultural La Alameda</p>
+    <h1 th:text="${titulo}">Título de la página</h1>
+    <p class="subtitulo" th:text="${subtitulo}">Subtítulo de la página</p>
+</header>
+
+<!-- recibe la pagina actual para marcar su enlace con la clase "activa" -->
+<nav class="navegacion" th:fragment="navegacion(paginaActiva)" th:attr="aria-label=#{nav.etiqueta}">
+    <!-- @{...} construye la ruta interna, th:classappend añade la clase solo si es la pagina actual -->
+    <a th:href="@{/}" th:classappend="${paginaActiva == 'inicio'} ? 'activa'"
+       th:text="#{nav.inicio}">Actividades</a>
+    <a th:href="@{/visita}" th:classappend="${paginaActiva == 'visita'} ? 'activa'"
+       th:text="#{nav.visita}">Planifica tu visita</a>
+</nav>
+
+<!-- el LocaleChangeInterceptor lee el lang y guarda el idioma en la sesion -->
+<div class="idioma" th:fragment="idioma(ruta)">
+    <span th:text="#{idioma.etiqueta}">Idioma</span>
+    <a th:href="@{${ruta}(lang='es')}" lang="es">Español</a>
+    <a th:href="@{${ruta}(lang='en')}" lang="en">English</a>
+</div>
+
+<!-- pie es igual en las dos paginas -->
+<footer class="pie" th:fragment="pie">
+    <p th:text="#{pie.texto}">Centro Cultural La Alameda · Abierto a todos los públicos</p>
+    <p class="nota" th:text="#{pie.nota}">Página de práctica: los datos son de ejemplo.</p>
+</footer>
+
+<!-- recibe los textos ya traducidos, asi la misma estructura sirve para todas las actividades -->
+<article class="actividad" th:fragment="actividad(titulo, descripcion, dato)">
+    <h3 th:text="${titulo}">Título de la actividad</h3>
+    <p th:text="${descripcion}">Descripción de la actividad.</p>
+    <p class="dato">
+        <strong th:text="#{inicio.dato.etiqueta}">Cuándo y dónde</strong>:
+        <span th:text="${dato}">Sábado, 10:30 · Aula</span>
+    </p>
+</article>
+
+</body>
+</html>
