@@ -1,0 +1,209 @@
+/* estilos del centro cultural: colores de Sevilla (albero, almagra y azul de azulejo de Triana).
+   se adapta a movil; las fuentes se cargan de Google Fonts y si no hay internet se usan las del sistema */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700&display=swap");
+
+/* colores en variables para no repetirlos en cada regla */
+:root {
+    --albero: #e8b23a;
+    --albero-claro: #fbf1d8;
+    --almagra: #a63d1e;
+    --almagra-oscura: #7a2a12;
+    --azulejo: #1f4e8c;
+    --azulejo-claro: #dce8f7;
+    --cal: #fffdf8;
+    --tinta: #2a1f1a;
+    --gris: #6f625a;
+    --borde: #ead9bb;
+    --sombra: 0 10px 30px rgba(122, 42, 18, 0.12);
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--tinta);
+    line-height: 1.55;
+    background-color: var(--albero-claro);
+    /* fondo que imita azulejos: rombos azules suaves repetidos */
+    background-image:
+            linear-gradient(45deg, rgba(31, 78, 140, 0.07) 25%, transparent 25%),
+            linear-gradient(-45deg, rgba(31, 78, 140, 0.07) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, rgba(31, 78, 140, 0.07) 75%),
+            linear-gradient(-45deg, transparent 75%, rgba(31, 78, 140, 0.07) 75%);
+    background-size: 44px 44px;
+    background-position: 0 0, 0 22px, 22px -22px, -22px 0;
+}
+
+.pagina { max-width: 1000px; margin: 0 auto; padding: 1.25rem; }
+
+/* cabecera como un cartel: degradado almagra con una franja de albero abajo */
+.cabecera {
+    position: relative;
+    margin: 0.5rem 0 1.5rem;
+    padding: 2.25rem 1.75rem 2rem;
+    border-radius: 18px;
+    color: var(--cal);
+    background: linear-gradient(135deg, var(--almagra) 0%, var(--almagra-oscura) 100%);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+.cabecera::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 10px;
+    background: repeating-linear-gradient(90deg, var(--albero) 0 22px, var(--azulejo) 22px 44px);
+}
+.cabecera h1 {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+.cabecera p { margin: 0.6rem 0 0; font-size: 1.05rem; opacity: 0.92; max-width: 42rem; }
+
+/* tarjetas blancas con borde superior de color */
+.tarjeta {
+    background: var(--cal);
+    border: 1px solid var(--borde);
+    border-top: 6px solid var(--azulejo);
+    border-radius: 16px;
+    padding: 1.5rem 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--sombra);
+}
+.tarjeta h2 {
+    margin: 0 0 1rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--azulejo);
+}
+/* el contador del titulo como una pastilla de albero */
+.tarjeta h2 span {
+    display: inline-block;
+    min-width: 1.6em;
+    padding: 0 0.45em;
+    border-radius: 999px;
+    background: var(--albero);
+    color: var(--tinta);
+    font-family: "Inter", sans-serif;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+.vacio {
+    padding: 1.25rem;
+    border: 2px dashed var(--borde);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--gris);
+    font-style: italic;
+}
+
+/* tabla: en pantallas estrechas se desplaza en horizontal en vez de romper la pagina */
+.tabla-scroll { overflow-x: auto; border-radius: 12px; border: 1px solid var(--borde); }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th {
+    background: var(--azulejo);
+    color: var(--cal);
+    text-align: left;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.8rem;
+}
+td { padding: 0.85rem 0.8rem; border-bottom: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: #fdf8ee; }
+tbody tr { transition: background 0.15s ease; }
+tbody tr:hover { background: var(--azulejo-claro); }
+tbody tr:last-child td { border-bottom: none; }
+td strong { font-size: 1.02rem; }
+.descripcion { margin: 0.3rem 0 0; color: var(--gris); font-size: 0.9rem; }
+
+/* etiquetas de inscripcion */
+.etiqueta {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.abierta { background: #1e7a46; color: #fff; }
+.abierta::before { content: "● "; }
+.cerrada { background: #e5ddd3; color: #5b4e45; }
+
+/* formulario */
+form label { display: block; margin-top: 1rem; font-weight: 600; font-size: 0.95rem; }
+input[type="text"], input[type="date"], input[type="number"], textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0.35rem;
+    padding: 0.7rem 0.8rem;
+    font: inherit;
+    color: var(--tinta);
+    background: #fff;
+    border: 2px solid var(--borde);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--azulejo);
+    box-shadow: 0 0 0 4px rgba(31, 78, 140, 0.15);
+}
+textarea { min-height: 6rem; resize: vertical; }
+
+.fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 1.25rem; }
+
+.casilla {
+    display: flex !important;
+    align-items: center;
+    gap: 0.6rem;
+    width: fit-content;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    background: var(--albero-claro);
+    border: 2px solid var(--borde);
+    cursor: pointer;
+}
+.casilla input { width: 1.15rem; height: 1.15rem; accent-color: var(--almagra); }
+
+.error { color: #b42318; margin: 0.3rem 0 0; font-size: 0.88rem; font-weight: 600; }
+.aviso-error {
+    margin: 0 0 0.5rem;
+    padding: 0.8rem 1rem;
+    border-left: 6px solid #b42318;
+    border-radius: 8px;
+    background: #fde8e4;
+    color: #8a1c1c;
+    font-weight: 700;
+}
+
+button {
+    margin-top: 1.5rem;
+    padding: 0.85rem 1.6rem;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--almagra), var(--almagra-oscura));
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(166, 61, 30, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(166, 61, 30, 0.4); }
+button:active { transform: translateY(0); }
+
+/* pantallas pequeñas: menos relleno para aprovechar el ancho */
+@media (max-width: 600px) {
+    .pagina { padding: 0.75rem; }
+    .cabecera { padding: 1.75rem 1.25rem 1.6rem; border-radius: 14px; }
+    .tarjeta { padding: 1.1rem 1rem 1.25rem; }
+    button { width: 100%; }
+}
